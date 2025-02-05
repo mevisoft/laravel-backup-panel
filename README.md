@@ -1,11 +1,11 @@
 # Laravel Backup Panel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pavel-mironchik/laravel-backup-panel.svg?style=flat-square)](https://packagist.org/packages/pavel-mironchik/laravel-backup-panel)
-[![Build Status](https://img.shields.io/travis/pavel-mironchik/laravel-backup-panel/master.svg?style=flat-square)](https://travis-ci.org/pavel-mironchik/laravel-backup-panel)
-[![Tests](https://github.com/pavel-mironchik/laravel-backup-panel/workflows/Tests/badge.svg)](https://github.com/pavel-mironchik/laravel-backup-panel/actions?query=workflow%3ATests)
-[![Quality Score](https://img.shields.io/scrutinizer/g/pavel-mironchik/laravel-backup-panel.svg?style=flat-square)](https://scrutinizer-ci.com/g/pavel-mironchik/laravel-backup-panel)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mevisoft/laravel-backup-panel.svg?style=flat-square)](https://packagist.org/packages/mevisoft/laravel-backup-panel)
+[![Build Status](https://img.shields.io/travis/mevisoft/laravel-backup-panel/master.svg?style=flat-square)](https://travis-ci.org/mevisoft/laravel-backup-panel)
+[![Tests](https://github.com/mevisoft/laravel-backup-panel/workflows/Tests/badge.svg)](https://github.com/mevisoft/laravel-backup-panel/actions?query=workflow%3ATests)
+[![Quality Score](https://img.shields.io/scrutinizer/g/mevisoft/laravel-backup-panel.svg?style=flat-square)](https://scrutinizer-ci.com/g/mevisoft/laravel-backup-panel)
 [![StyleCI](https://github.styleci.io/repos/231844000/shield?branch=master)](https://github.styleci.io/repos/231844000)
-[![Total Downloads](https://img.shields.io/packagist/dt/pavel-mironchik/laravel-backup-panel.svg?style=flat-square)](https://packagist.org/packages/pavel-mironchik/laravel-backup-panel)
+[![Total Downloads](https://img.shields.io/packagist/dt/mevisoft/laravel-backup-panel.svg?style=flat-square)](https://packagist.org/packages/mevisoft/laravel-backup-panel)
 
 Laravel Backup Panel provides a dashboard for [spatie/laravel-backup](https://github.com/spatie/laravel-backup) package.
 It lets you:
@@ -42,7 +42,7 @@ When successful, running `php artisan backup:run` on the terminal should create 
 You may use composer to install Laravel Backup Panel into your project:
 
 ```bash
-$ composer require pavel-mironchik/laravel-backup-panel
+$ composer require mevisoft/laravel-backup-panel
 ```
 
 After installing, publish its resources using provided Artisan command:
@@ -68,7 +68,7 @@ $ php artisan vendor:publish --tag=laravel-backup-panel-views --force
 
 ### Upgrading
 
-See the [Wiki](https://github.com/pavel-mironchik/laravel-backup-panel/wiki/Upgrade-Guide) for the instructions how to upgrade from version 1.
+See the [Wiki](https://github.com/mevisoft/laravel-backup-panel/wiki/Upgrade-Guide) for the instructions how to upgrade from version 1.
 
 ## Configuration
 
@@ -140,7 +140,7 @@ And any other help will be appreciated.
 
 ## Credits
 
-- [Pavel Mironchik](https://github.com/pavel-mironchik)
+- [Pavel Mironchik](https://github.com/mevisoft)
 - [All Contributors](../../contributors)
 
 ## License
