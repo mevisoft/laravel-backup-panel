@@ -31,4 +31,16 @@ return [
 
     'queue' => null,
 
+    'middleware' => null,
+
+    'backups' => [
+        "database" => [
+            "exclude_tables" => [],
+            "enabled" => true,
+        ],
+        "files" => [
+            "enabled" => true,
+        ]
+    ]
+
 ];

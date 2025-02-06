@@ -16,12 +16,17 @@
                 </svg>
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" id="create-backup-only-db" wire:click.prevent="">
-                    Create database backup
-                </a>
-                <a class="dropdown-item" href="#" id="create-backup-only-files" wire:click.prevent="">
-                    Create files backup
-                </a>
+
+                @if(config("laravel_backup_panel.backups.database.enabled"))
+                    <a class="dropdown-item" href="#" id="create-backup-only-db" wire:click.prevent="">
+                        Create database backup
+                    </a>
+                @endif
+                @if(config("laravel_backup_panel.backups.files.enabled"))
+                    <a class="dropdown-item" href="#" id="create-backup-only-files" wire:click.prevent="">
+                        Create files backup
+                    </a>
+                @endif
             </div>
         </div>
     </div>
@@ -37,7 +42,8 @@
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="0.7875rem" height="0.7875rem" viewBox="0 0 24 24"
                              fill="currentColor">
-                            <path class="heroicon-ui" d="M6 18.7V21a1 1 0 0 1-2 0v-5a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H7.1A7 7 0 0 0 19 12a1 1 0 1 1 2 0 9 9 0 0 1-15 6.7zM18 5.3V3a1 1 0 0 1 2 0v5a1 1 0 0 1-1 1h-5a1 1 0 0 1 0-2h2.9A7 7 0 0 0 5 12a1 1 0 1 1-2 0 9 9 0 0 1 15-6.7z"/>
+                            <path class="heroicon-ui"
+                                  d="M6 18.7V21a1 1 0 0 1-2 0v-5a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H7.1A7 7 0 0 0 19 12a1 1 0 1 1 2 0 9 9 0 0 1-15 6.7zM18 5.3V3a1 1 0 0 1 2 0v5a1 1 0 0 1-1 1h-5a1 1 0 0 1 0-2h2.9A7 7 0 0 0 5 12a1 1 0 1 1-2 0 9 9 0 0 1 15-6.7z"/>
                         </svg>
                     </button>
                 </div>
@@ -58,11 +64,13 @@
                             <td>
                                 @if($backupStatus['healthy'])
                                     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" height="24px">
-                                        <path d="M2.93 17.07A10 10 0 1 0 17.07 2.93 10 10 0 0 0 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM4 10l2-2 3 3 5-5 2 2-7 7-5-5z" fill="var(--success)" fill-rule="evenodd"/>
+                                        <path d="M2.93 17.07A10 10 0 1 0 17.07 2.93 10 10 0 0 0 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM4 10l2-2 3 3 5-5 2 2-7 7-5-5z"
+                                              fill="var(--success)" fill-rule="evenodd"/>
                                     </svg>
                                 @else
                                     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" height="24px">
-                                        <path d="M11.41 10l2.83-2.83-1.41-1.41L10 8.59 7.17 5.76 5.76 7.17 8.59 10l-2.83 2.83 1.41 1.41L10 11.41l2.83 2.83 1.41-1.41L11.41 10zm-8.48 7.07A10 10 0 1 0 17.07 2.93 10 10 0 0 0 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66z" fill="var(--danger)" fill-rule="evenodd"/>
+                                        <path d="M11.41 10l2.83-2.83-1.41-1.41L10 8.59 7.17 5.76 5.76 7.17 8.59 10l-2.83 2.83 1.41 1.41L10 11.41l2.83 2.83 1.41-1.41L11.41 10zm-8.48 7.07A10 10 0 1 0 17.07 2.93 10 10 0 0 0 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66z"
+                                              fill="var(--danger)" fill-rule="evenodd"/>
                                     </svg>
                                 @endif
                             </td>
@@ -96,8 +104,10 @@
                             wire:click="getFiles"
                             {{ $activeDisk ? '' : 'disabled' }}
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="0.7875rem" height="0.7875rem" viewBox="0 0 24 24" fill="currentColor">
-                            <path class="heroicon-ui" d="M6 18.7V21a1 1 0 0 1-2 0v-5a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H7.1A7 7 0 0 0 19 12a1 1 0 1 1 2 0 9 9 0 0 1-15 6.7zM18 5.3V3a1 1 0 0 1 2 0v5a1 1 0 0 1-1 1h-5a1 1 0 0 1 0-2h2.9A7 7 0 0 0 5 12a1 1 0 1 1-2 0 9 9 0 0 1 15-6.7z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="0.7875rem" height="0.7875rem" viewBox="0 0 24 24"
+                             fill="currentColor">
+                            <path class="heroicon-ui"
+                                  d="M6 18.7V21a1 1 0 0 1-2 0v-5a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H7.1A7 7 0 0 0 19 12a1 1 0 1 1 2 0 9 9 0 0 1-15 6.7zM18 5.3V3a1 1 0 0 1 2 0v5a1 1 0 0 1-1 1h-5a1 1 0 0 1 0-2h2.9A7 7 0 0 0 5 12a1 1 0 1 1-2 0 9 9 0 0 1 15-6.7z"/>
                         </svg>
                     </button>
                 </div>
@@ -118,14 +128,18 @@
                             <td>{{ $file['date'] }}</td>
                             <td>{{ $file['size'] }}</td>
                             <td class="text-right pr-3">
-                                <a class="action-button mr-2" href="#" target="_blank" wire:click.prevent="downloadFile('{{ $file['path'] }}')">
+                                <a class="action-button mr-2" href="#" target="_blank"
+                                   wire:click.prevent="downloadFile('{{ $file['path'] }}')">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                        <path class="heroicon-ui" d="M11 14.59V3a1 1 0 0 1 2 0v11.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.42l3.3 3.3zM3 17a1 1 0 0 1 2 0v3h14v-3a1 1 0 0 1 2 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3z"/>
+                                        <path class="heroicon-ui"
+                                              d="M11 14.59V3a1 1 0 0 1 2 0v11.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.42l3.3 3.3zM3 17a1 1 0 0 1 2 0v3h14v-3a1 1 0 0 1 2 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3z"/>
                                     </svg>
                                 </a>
-                                <a class="action-button" href="#" target="_blank" wire:click.prevent="showDeleteModal({{ $loop->index }})">
+                                <a class="action-button" href="#" target="_blank"
+                                   wire:click.prevent="showDeleteModal({{ $loop->index }})">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                        <path class="heroicon-ui" d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"/>
+                                        <path class="heroicon-ui"
+                                              d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2h5a1 1 0 0 1 0 2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8H3a1 1 0 1 1 0-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0v-6a1 1 0 0 1 1-1z"/>
                                     </svg>
                                 </a>
                             </td>
@@ -150,7 +164,7 @@
                             <div class="modal-body">
                                 <h5 class="modal-title mb-3">Delete backup</h5>
                                 @if($deletingFile)
-                                <span class="text-muted">
+                                    <span class="text-muted">
                                     Are you sure you want to delete the backup created at {{ $deletingFile['date'] }} ?
                                 </span>
                                 @endif
@@ -187,7 +201,7 @@
                 }).showToast()
             })
 
-            const backupFun = function (option = '') {
+            const backupFun = function (option = 'only-db') {
                 Toastify({
                     text: 'Creating a new backup in the background...' + (option ? ' (' + option + ')' : ''),
                     duration: 5000,
@@ -201,14 +215,16 @@
             }
 
             $('#create-backup').on('click', function () {
-                backupFun()
+                backupFun('only-db')
             })
             $('#create-backup-only-db').on('click', function () {
                 backupFun('only-db')
             })
+            @if(config("laravel_backup_panel.backups.files.enabled"))
             $('#create-backup-only-files').on('click', function () {
                 backupFun('only-files')
             })
+            @endif
 
             const deleteModal = $('#deleteModal')
             @this.on('showDeleteModal', function () {

@@ -3,6 +3,7 @@
 namespace PavelMironchik\LaravelBackupPanel;
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,7 +30,7 @@ class LaravelBackupPanelApplicationServiceProvider extends ServiceProvider
 
         LaravelBackupPanel::auth(function ($request) {
             return App::environment('local') ||
-                   Gate::check('viewLaravelBackupPanel', [$request->user()]);
+                Gate::check('viewLaravelBackupPanel', [$request->user()]);
         });
     }
 
@@ -56,6 +57,6 @@ class LaravelBackupPanelApplicationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Event::listen(\Spatie\Backup\Events\DumpingDatabase::class, \PavelMironchik\LaravelBackupPanel\Listener\ExcludeDumpingDatabase::class);
     }
 }
